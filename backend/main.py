@@ -469,13 +469,6 @@ async def lifespan(_app):
             "latitude REAL, longitude REAL, location TEXT NOT NULL, details TEXT NOT NULL)"
         )
         connection.execute(
-            "CREATE TABLE IF NOT EXISTS security_events ("
-            "event_id TEXT PRIMARY KEY, country_key TEXT NOT NULL, event_date TEXT NOT NULL, "
-            "category TEXT NOT NULL, violence_type INTEGER NOT NULL, headline TEXT NOT NULL, "
-            "severity TEXT NOT NULL, source_count INTEGER NOT NULL, best_deaths INTEGER NOT NULL, "
-            "latitude REAL, longitude REAL, location TEXT NOT NULL, details TEXT NOT NULL)"
-        )
-        connection.execute(
             "DELETE FROM news_cache WHERE query NOT LIKE ?",
             (f"{NEWS_CACHE_NAMESPACE}:%",),
         )
